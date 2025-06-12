@@ -2,32 +2,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lite PDF Tools</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Merger</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <video autoplay muted loop id="bgVideo">
-        <source src="background.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
+  <div class="video-background">
+    <video autoplay muted loop id="bg-video">
+      <source src="background.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
     </video>
-    <div class="overlay">
-        <nav>
-            <button>Merge</button>
-            <button>Split</button>
-            <button>Compress</button>
-            <button>Protect</button>
-            <button>Image to PDF</button>
-        </nav>
-        <main>
-            <h1>Merge PDFs</h1>
-            <input type="file" multiple>
-            <button>Merge and Download</button>
-        </main>
-        <footer>
-            <p>&copy; Vijay Malviya 2025</p>
-        </footer>
-    </div>
+    <div class="overlay"></div>
+  </div>
+
+  <main class="content">
+    <h1>Merge PDF Files</h1>
+    <p>Select PDF files to merge them into a single document.</p>
+    <input type="file" multiple accept="application/pdf" />
+    <button>Merge Now</button>
+  </main>
 </body>
 </html>
+    
