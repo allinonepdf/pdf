@@ -36,6 +36,24 @@ body, html {
   z-index: 2;
   color: white;
   text-align: center;
-  top: 30%;
+  padding-top: 60px;
 }
-    
+
+.tool-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #00bcd4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tool-buttons button:hover {
+  background: #0097a7;
+}
+
+.tool-section {
+  margin-top: 40px;
+  font-size: 20px;
+}

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDF Merger</title>
+  <title>All-in-One PDF Tools</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,11 +17,29 @@
   </div>
 
   <main class="content">
-    <h1>Merge PDF Files</h1>
-    <p>Select PDF files to merge them into a single document.</p>
-    <input type="file" multiple accept="application/pdf" />
-    <button>Merge Now</button>
+    <h1>All-in-One PDF Tools</h1>
+    <div class="tool-buttons">
+      <button onclick="showTool('merge')">Merge PDF</button>
+      <button onclick="showTool('split')">Split PDF</button>
+      <button onclick="showTool('pdfToWord')">PDF to Word</button>
+      <button onclick="showTool('wordToPdf')">Word to PDF</button>
+      <button onclick="showTool('pdfToJpg')">PDF to JPG</button>
+    </div>
+
+    <div class="tool-container">
+      <div id="merge" class="tool-section">Merge PDF Tool Placeholder</div>
+      <div id="split" class="tool-section" style="display:none">Split PDF Tool Placeholder</div>
+      <div id="pdfToWord" class="tool-section" style="display:none">PDF to Word Tool Placeholder</div>
+      <div id="wordToPdf" class="tool-section" style="display:none">Word to PDF Tool Placeholder</div>
+      <div id="pdfToJpg" class="tool-section" style="display:none">PDF to JPG Tool Placeholder</div>
+    </div>
   </main>
+
+  <script>
+    function showTool(toolId) {
+      document.querySelectorAll('.tool-section').forEach(el => el.style.display = 'none');
+      document.getElementById(toolId).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
-    
