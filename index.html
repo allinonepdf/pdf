@@ -77,9 +77,16 @@
     </div>
   </main>
 
-  <footer class="text-center text-white py-4 mt-10 bg-blue-800">
-    © Vijay Malviya 2025 – All rights reserved
-  </footer>
+  <footer class="w-full mt-10 bg-blue-800 text-white py-6 text-center text-sm shadow-inner">
+  <div class="container mx-auto px-4">
+    <p>© <span id="year"></span> Vijay Malviya – All rights reserved</p>
+    <p class="mt-2">Built with ❤️ using HTML, Tailwind CSS, and JavaScript</p>
+  </div>
+</footer>
+<script>
+  // Automatically updates year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
   <script>
     function showTab(id) {
