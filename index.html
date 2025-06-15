@@ -2,136 +2,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All-in-One PDF Tools</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <style>
-    body { background: linear-gradient(to right, #6dd5fa, #2980b9); transition: opacity 1s ease-in; opacity: 0; }
-    body.loaded { opacity: 1; }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body onload="document.body.classList.add('loaded')" class="text-white">
-  <nav class="bg-blue-900 p-4 text-center font-bold text-2xl">All-in-One PDF Tools</nav>
-  <div class="p-6 space-y-8 max-w-2xl mx-auto">
+<body class="bg-gradient-to-r from-blue-300 to-blue-100 font-sans">
+  <nav class="bg-blue-800 text-white px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">All-in-One PDF Tools</h1>
+    <div class="space-x-4">
+      <a href="#" class="hover:underline">Merge</a>
+      <a href="#" class="hover:underline">Split</a>
+      <a href="#" class="hover:underline">Compress</a>
+      <a href="#" class="hover:underline">Protect</a>
+      <a href="#" class="hover:underline">Image to PDF</a>
+    </div>
+  </nav>
 
-    <!-- Merge -->
-    <section class="bg-white bg-opacity-10 p-4 rounded-xl shadow-md">
-      <h2 class="text-xl font-bold mb-2">Merge PDFs</h2>
-      <input id="merge-files" type="file" multiple accept="application/pdf" class="mb-2 block text-black">
-      <button onclick="mergePDFs()" class="bg-green-500 px-4 py-2 rounded hover:bg-green-600">Merge</button>
-    </section>
+  <main class="flex overflow-x-auto gap-6 p-6">
+    <!-- Tool Cards -->
+    
+<div class="bg-blue-300 p-4 rounded-xl shadow-md w-72 min-w-[18rem]">
+  <h2 class="text-xl font-bold mb-2">Merge PDFs</h2>
+  <input type="file" multiple class="mb-2 w-full" />
+  
+  <button class="bg-blue-600 text-white px-4 py-2 rounded w-full">Merge</button>
+</div>
 
-    <!-- Split -->
-    <section class="bg-white bg-opacity-10 p-4 rounded-xl shadow-md">
-      <h2 class="text-xl font-bold mb-2">Split PDF</h2>
-      <input id="split-file" type="file" accept="application/pdf" class="mb-2 block text-black">
-      <button onclick="splitPDF()" class="bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-600">Split</button>
-    </section>
 
-    <!-- Compress -->
-    <section class="bg-white bg-opacity-10 p-4 rounded-xl shadow-md">
-      <h2 class="text-xl font-bold mb-2">Compress PDF</h2>
-      <input id="compress-file" type="file" accept="application/pdf" class="mb-2 block text-black">
-      <button onclick="compressPDF()" class="bg-purple-500 px-4 py-2 rounded hover:bg-purple-600">Compress</button>
-    </section>
+<div class="bg-blue-300 p-4 rounded-xl shadow-md w-72 min-w-[18rem]">
+  <h2 class="text-xl font-bold mb-2">Split PDF</h2>
+  <input type="file"  class="mb-2 w-full" />
+  
+  <button class="bg-blue-600 text-white px-4 py-2 rounded w-full">Split</button>
+</div>
 
-    <!-- Protect -->
-    <section class="bg-white bg-opacity-10 p-4 rounded-xl shadow-md">
-      <h2 class="text-xl font-bold mb-2">Protect PDF (Password)</h2>
-      <input id="protect-file" type="file" accept="application/pdf" class="mb-2 block text-black">
-      <input id="pdf-password" type="text" placeholder="Enter password" class="mb-2 p-1 text-black rounded">
-      <button onclick="protectPDF()" class="bg-red-500 px-4 py-2 rounded hover:bg-red-600">Protect</button>
-    </section>
 
-    <!-- Image to PDF -->
-    <section class="bg-white bg-opacity-10 p-4 rounded-xl shadow-md">
-      <h2 class="text-xl font-bold mb-2">Image to PDF</h2>
-      <input id="image-files" type="file" multiple accept="image/*" class="mb-2 block text-black">
-      <button onclick="imageToPDF()" class="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600">Convert</button>
-    </section>
+<div class="bg-blue-300 p-4 rounded-xl shadow-md w-72 min-w-[18rem]">
+  <h2 class="text-xl font-bold mb-2">Compress PDF</h2>
+  <input type="file"  class="mb-2 w-full" />
+  
+  <button class="bg-blue-600 text-white px-4 py-2 rounded w-full">Compress</button>
+</div>
 
-  </div>
 
-  <footer class="text-center p-4 bg-blue-900 mt-10 text-sm">© 2025 Vijay Malviya – All rights reserved</footer>
+<div class="bg-blue-300 p-4 rounded-xl shadow-md w-72 min-w-[18rem]">
+  <h2 class="text-xl font-bold mb-2">Protect PDF</h2>
+  <input type="file"  class="mb-2 w-full" />
+  <input type="password" placeholder="Password" class="w-full mb-2 p-1 rounded" />
+  <button class="bg-blue-600 text-white px-4 py-2 rounded w-full">Protect</button>
+</div>
 
-  <script>
-    async function mergePDFs() {
-      const files = document.getElementById('merge-files').files;
-      const mergedPdf = await PDFLib.PDFDocument.create();
-      for (let file of files) {
-        const bytes = await file.arrayBuffer();
-        const pdf = await PDFLib.PDFDocument.load(bytes);
-        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
-        copiedPages.forEach(page => mergedPdf.addPage(page));
-      }
-      const mergedBytes = await mergedPdf.save();
-      download(mergedBytes, 'merged.pdf');
-    }
 
-    async function splitPDF() {
-      const file = document.getElementById('split-file').files[0];
-      const bytes = await file.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes);
-      for (let i = 0; i < pdf.getPageCount(); i++) {
-        const newPdf = await PDFLib.PDFDocument.create();
-        const [page] = await newPdf.copyPages(pdf, [i]);
-        newPdf.addPage(page);
-        const newBytes = await newPdf.save();
-        download(newBytes, `page_${i + 1}.pdf`);
-      }
-    }
+<div class="bg-blue-300 p-4 rounded-xl shadow-md w-72 min-w-[18rem]">
+  <h2 class="text-xl font-bold mb-2">Image to PDF</h2>
+  <input type="file" multiple class="mb-2 w-full" />
+  
+  <button class="bg-blue-600 text-white px-4 py-2 rounded w-full">Convert</button>
+</div>
 
-    async function compressPDF() {
-      const file = document.getElementById('compress-file').files[0];
-      const bytes = await file.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes);
-      const savedBytes = await pdf.save({ useObjectStreams: false }); // simulate compression
-      download(savedBytes, 'compressed.pdf');
-    }
+  </main>
 
-    async function protectPDF() {
-      const file = document.getElementById('protect-file').files[0];
-      const password = document.getElementById('pdf-password').value;
-      if (!password) return alert("Enter password");
-      const bytes = await file.arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes);
-      const protectedBytes = await pdf.save({ passwords: { owner: password } });
-      download(protectedBytes, 'protected.pdf');
-    }
-
-    async function imageToPDF() {
-      const { jsPDF } = window.jspdf;
-      const files = document.getElementById('image-files').files;
-      const pdf = new jsPDF();
-      for (let i = 0; i < files.length; i++) {
-        const img = await readFileAsDataURL(files[i]);
-        if (i > 0) pdf.addPage();
-        pdf.addImage(img, 'JPEG', 10, 10, 190, 280);
-      }
-      pdf.save("converted.pdf");
-    }
-
-    function readFileAsDataURL(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-      });
-    }
-
-    function download(bytes, filename) {
-      const blob = new Blob([bytes], { type: "application/pdf" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
+  <footer class="bg-blue-800 text-white text-center py-4 mt-6">
+    © 2025 Vijay Malviya ~ All rights reserved
+  </footer>
 </body>
 </html>
