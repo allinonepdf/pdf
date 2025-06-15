@@ -3,99 +3,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All-in-One PDF Tools</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
-    .tab-content { display: none; }
-    .active { display: block; }
-    .tab-btn-active { color: #fff; font-weight: bold; }
+    body {
+      background: linear-gradient(120deg, #58a6ff, #e0f0ff);
+      transition: opacity 1s ease-in;
+      opacity: 0;
+    }
+    body.loaded {
+      opacity: 1;
+    }
   </style>
 </head>
-<body class="bg-gradient-to-r from-blue-400 to-cyan-500 min-h-screen text-white font-sans">
-
-  <!-- Navbar -->
-  <nav class="bg-blue-800 text-white p-4 flex justify-between items-center shadow">
+<body onload="document.body.classList.add('loaded')">
+  <nav class="bg-blue-800 text-white p-4 flex justify-between items-center">
     <div class="text-xl font-bold">All-in-One PDF Tools</div>
-    <div id="tabs" class="space-x-4">
-      <button class="tab-btn tab-btn-active" onclick="showTab('merge')">Merge</button>
-      <button class="tab-btn" onclick="showTab('split')">Split</button>
-      <button class="tab-btn" onclick="showTab('compress')">Compress</button>
-      <button class="tab-btn" onclick="showTab('protect')">Protect</button>
-      <button class="tab-btn" onclick="showTab('image')">Image to PDF</button>
+    <div class="space-x-4">
+      <a href="#" class="font-semibold underline">Merge</a>
+      <a href="#">Split</a>
+      <a href="#">Compress</a>
+      <a href="#">Protect</a>
+      <a href="#">Image to PDF</a>
     </div>
   </nav>
 
-  <!-- Lottie Animation -->
-  <div class="flex justify-center mt-6">
-    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_tutvdkg0.json"
-      background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay>
-    </lottie-player>
-  </div>
-
-  <!-- Tool Sections -->
-  <main class="flex justify-center mt-6">
-    <div class="bg-blue-900 bg-opacity-40 p-6 rounded-xl w-full max-w-xl">
-
-      <!-- Merge Tool -->
-      <div id="merge" class="tab-content active">
-        <h2 class="text-xl font-bold mb-4">Merge PDFs</h2>
-        <input type="file" multiple accept="application/pdf" class="block mb-4">
-        <button class="bg-blue-600 px-4 py-2 rounded">Merge and Download</button>
-      </div>
-
-      <!-- Split Tool -->
-      <div id="split" class="tab-content">
-        <h2 class="text-xl font-bold mb-4">Split PDF</h2>
-        <input type="file" accept="application/pdf" class="block mb-4">
-        <button class="bg-blue-600 px-4 py-2 rounded">Split and Download</button>
-      </div>
-
-      <!-- Compress Tool -->
-      <div id="compress" class="tab-content">
-        <h2 class="text-xl font-bold mb-4">Compress PDF</h2>
-        <input type="file" accept="application/pdf" class="block mb-4">
-        <button class="bg-blue-600 px-4 py-2 rounded">Compress and Download</button>
-      </div>
-
-      <!-- Protect Tool -->
-      <div id="protect" class="tab-content">
-        <h2 class="text-xl font-bold mb-4">Protect PDF with Password</h2>
-        <input type="file" accept="application/pdf" class="block mb-2">
-        <input type="password" placeholder="Enter password" class="block w-full px-2 py-1 text-black mb-4">
-        <button class="bg-blue-600 px-4 py-2 rounded">Protect and Download</button>
-      </div>
-
-      <!-- Image to PDF Tool -->
-      <div id="image" class="tab-content">
-        <h2 class="text-xl font-bold mb-4">Convert Images to PDF</h2>
-        <input type="file" multiple accept="image/*" class="block mb-4">
-        <button class="bg-blue-600 px-4 py-2 rounded">Convert and Download</button>
-      </div>
-
+  <div class="flex flex-col items-center justify-center min-h-screen px-4">
+    <img src="pdf-icon.png" alt="PDF Icon" class="w-32 h-32 mb-6">
+    <div class="bg-blue-300 bg-opacity-70 p-8 rounded-xl shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold mb-4 text-white">Merge PDFs</h2>
+      <input type="file" multiple class="mb-4" />
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 w-full">
+        Merge and Download
+      </button>
     </div>
-  </main>
-
-  <footer class="w-full mt-10 bg-blue-800 text-white py-6 text-center text-sm shadow-inner">
-  <div class="container mx-auto px-4">
-    <p>© <span id="year"></span> Vijay Malviya – All rights reserved</p>
-    <p class="mt-2">Built with ❤️ using HTML, Tailwind CSS, and JavaScript</p>
   </div>
-</footer>
-<script>
-  // Automatically updates year
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
-  <script>
-    function showTab(id) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('tab-btn-active'));
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('tab-btn-active');
-    }
-  </script>
-
+  <footer class="bg-blue-800 text-white text-center p-4 mt-10">
+    © 2025 Vijay Malviya – All rights reserved<br/>
+    Built with ❤️ using HTML, Tailwind CSS, and JavaScript
+  </footer>
 </body>
 </html>
